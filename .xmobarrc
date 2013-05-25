@@ -1,0 +1,14 @@
+Config { font = "xft:Terminus (TTF):size=14"
+       , bgColor = "#4B4B4B"
+       , fgColor = "#c0c0a0"
+       , position = TopW L 84
+       , lowerOnStart = True
+       , commands = [ 
+                      Run Battery ["--Low","15","--High","25","--low","#ee0000","--normal","#FF5D1D","--high","#25FF16","-t", "<left>%"] 50
+                    , Run Date "%a %_d %b  <fc=#C0B7F5>%H:%M</fc>" "date" 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader%}{[%battery%] <fc=#ffffff>%date%</fc> "
+       }
