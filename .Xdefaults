@@ -1,0 +1,72 @@
+stjerm.key: f2
+
+Xft.dpi: 96
+! hintnone, hintslight, hintmedium, hintfull
+Xft.hintstyle: hintfull
+Xft.hinting: true
+! lcdnone, lcddefault, lcdlight, lcdlegacy
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb
+
+!URxvt.font: xft:Consolas:pixelsize=14:autohint=true:antialias=true
+!URxvt.font:-*-Terminus (TTF)-medium-*-*-*-14-*-*-*-*-*-*-r
+URxvt.font: xft:Terminus (TTF) for Powerline-15
+!URxvt.meta8:true
+!URxvt.termName: rxvt-256color 
+URxvt.shading: 0.5
+URxvt.transparent: true
+URxvt.inheritPixmap: true
+URxvt.depth: 32
+!URxvt.background: rgba:0000/0000/0000/aaaaaa
+URxvt*background: [90]#111111
+
+! Colors
+*foreground: #c2c2b0
+
+! Black + DarkGrey
+*color0:                        #262626
+*color8:                        #73675b
+! DarkRed + Red
+*color1:                        #a64211
+*color9:                        #cc5214
+! DarkGreen + Green
+*color2:                        #638046
+*color10:                       #80a65b
+! DarkYellow + Yellow
+*color3:                        #bf8c25
+*color11:                       #e6a82d
+! DarkBlue + Blue
+*color4:                        #4d6d99
+*color12:                       #6088bf
+! DarkMangenta + Mangenta
+*color5:                        #996b89
+*color13:                       #bf86ac
+! DarkCyan + Cyan
+*color6:                        #6b8e99
+*color14:                       #86b1bf
+! LightGrey + White
+*color7:                        #998a7a
+*color15:                       #c2c2b0
+!URxvt.fading: 70
+!URxvt.fadeColor: [0]black
+
+URxvt.saveLines:32767
+URxvt.scrollBar: false
+
+URxvt.tabbed.tabbar-fg: 7
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 10
+URxvt.tabbed.tab-bg: 0
+
+URxvt.scrollTtyOutput: false
+
+URxvt.keysym.Control-k: command:\033]720;2\007
+URxvt.keysym.Control-j: command:\033]721;2\007
+URxvt.keysym.Control-u: command:\033]720;8\007
+URxvt.keysym.Control-d: command:\033]721;8\007
+
+URxvt.perl-ext-common: default,tabbed,keyboard-select,clipboard,font-size
+
+URxvt.keysym.M-Esc:    perl:keyboard-select:activate
+URxvt.keysym.M-Up:     perl:font-size:increase
+URxvt.keysym.M-Down:   perl:font-size:decrease
