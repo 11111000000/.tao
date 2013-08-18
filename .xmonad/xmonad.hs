@@ -69,13 +69,15 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_e     ), namedScratchpadAction myScratchpads "editor")
     , ((modm .|. shiftMask, xK_e     ), namedScratchpadAction myScratchpads "sudoeditor")
     , ((modm,               xK_i     ), namedScratchpadAction myScratchpads "htop")
+    , ((modm,               xK_f     ), namedScratchpadAction myScratchpads "ranger")
+    , ((modm,               xK_w     ), namedScratchpadAction myScratchpads "weechat")
     , ((modm,               xK_v     ), namedScratchpadAction myScratchpads "alsamixer")
-    , ((modm,               xK_w     ), namedScratchpadAction myScratchpads "luakit")
+    , ((modm,               xK_n     ), namedScratchpadAction myScratchpads "mpd")
     --, ((modm,               xK_grave     ), namedScratchpadAction myScratchpads "console")
     , ((modm,               xK_r     ), spawn "exe=`dmenu_run -nb '#4B4B4B' -nf 'green' -sb 'grey' -sf 'black' -fn 'Terminus (TTF)-16' ` && eval \"exec $exe\"")
     , ((modm,               xK_c     ), spawn "exec dmenuclip")
     , ((modm,               xK_m     ), spawn "exec xmenud")
-    , ((modm,               xK_f     ), withFocused (sendMessage . maximizeRestore))
+    {-, ((modm,               xK_f     ), withFocused (sendMessage . maximizeRestore))-}
     , ((modm,               xK_g     ), spawn "exec pcmanfm" )
     -- , ((modm .|. shiftMask, xK_r     ), spawn "gmrun")
     , ((modm .|. shiftMask, xK_r), shellPrompt defaultXPConfig)
@@ -85,7 +87,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_space ), sendMessage NextLayout)
     {-, ((modm .|. shiftMask, xK_space ), sendMessage PrevLayout)-}
     , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
-    , ((modm,               xK_n     ), refresh)
+    , ((modm,               xK_Escape     ), refresh)
     , ((modm,               xK_Tab   ), windows W.focusDown)
     , ((modm .|. shiftMask, xK_Tab   ), windows W.focusUp)
     , ((modm,               xK_j     ), windows W.focusDown)
@@ -107,7 +109,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
     , ((modm              , xK_b     ), sendMessage ToggleStruts)
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
-    , ((modm              , xK_Escape     ), spawn "xmonad --recompile; xmonad --restart")
+    , ((modm .|. shiftMask, xK_Escape     ), spawn "xmonad --recompile; xmonad --restart")
     , ((modm              , xK_z     ), sendMessage ToggleLayout)
     --  , ((modm              , xK_x     ), sendMessage (Toggle "Full"))
 
@@ -149,7 +151,7 @@ myTabsTheme = defaultTheme { activeBorderColor = "#555"
                             , inactiveBorderColor = "#777"
                             , inactiveColor = "#888"
                             , inactiveTextColor = "#111"
-                            , fontName = "xft:Terminus (TTF)-14:bold"
+                            , fontName = "xft:Terminus (TTF)-12:bold"
                             , decoHeight = 21 
                             , urgentColor = "#000"
                             , urgentTextColor = "#63b8ff"
@@ -161,7 +163,7 @@ myManageHook = composeAll
     , resource  =? "kdesktop"       --> doIgnore 
     , className =? "Firefox"        --> doShift "web"
     , className =? "Chromium"       --> doShift "work"
-    , className =? "Thunderbird"    --> doShift "web"
+    , className =? "Thunderbird"    --> doShift "im"
     , className =? "Claws-mail"     --> doShift "web"
     , className =? "Pidgin"         --> doShift "im"
     , className =? "Skype"          --> doShift "im"
@@ -172,8 +174,8 @@ myManageHook = composeAll
     , className =? "Vlc"            --> doShift "fun"
     , className =? "Streamtuner2"   --> doShift "fun"    
     , className =? "Deluge"         --> doShift "ext"    
-    , title =? "ncmpcpp"              --> doShift "fun"
-    , title =? "ncmpc"              --> doShift "fun"
+    {-, title =? "ncmpcpp"              --> doShift "fun"-}
+    {-, title =? "ncmpc"              --> doShift "fun"-}
     , title =? "streamripper"       --> doShift "fun"    
     {-, className =? "Chromium"       --> doFloat    -}
     , className =? "Gimp"           --> doShift "gimp"
@@ -185,18 +187,24 @@ manageScratchPad :: ManageHook
 manageScratchPad = scratchpadManageHook (W.RationalRect l t w h) 
     where
         h = 0.5         -- terminal height
-        w = 0.9         -- terminal width
+        w = 1         -- terminal width
         t = 1 - h       -- distance from top edge
         l = (1 - w)/2   -- distance from left edge
 
 myScratchpads = [
     NS "htop" "urxvt -fn 'xft:Terminus (TTF)-10' -e htop" (title =? "htop") 
         (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
-    , NS "alsamixer" "urxvt -fn 'xft:Terminus (TTF)-10' -e alsamixer -c0" (title =? "alsamixer") 
+    , NS "ranger" "urxvt -fn 'xft:Terminus (TTF)-14' -e ranger" (title =? "ranger") 
+        (customFloating $ W.RationalRect 0 0 1 1)
+    , NS "weechat" "urxvt -fn 'xft:Terminus (TTF)-14' -e weechat-curses" (fmap (isInfixOf "weechat") title) 
+        (customFloating $ W.RationalRect 0 0 1 1)
+    , NS "alsamixer" "urxvt -fn 'xft:Terminus (TTF)-12' -e alsamixer -c0" (title =? "alsamixer") 
         (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
-    , NS "editor" "gvim -geom 201x21 -fn 'Terminus (TTF) 14' --role scratchEditor -c ':OpenSession user'" (role =? "scratchEditor")
+    , NS "mpd" "urxvt -fn 'xft:Terminus (TTF)-12' -e ncmpcpp" (title =? "ncmpcpp") 
+        (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+    , NS "editor" "gvim -geom 201x21 -fn 'Terminus (TTF) 14' --role scratchEditor -c ':OpenSession! user'" (role =? "scratchEditor")
         (customFloating $ W.RationalRect 0 0 1 0.5)
-    , NS "sudoeditor" "sudo gvim -geom 201x21 -fn 'Terminus (TTF) 14' --role scratchSudoEditor -c 'OpenSession etc'" (role =? "scratchSudoEditor")
+    , NS "sudoeditor" "sudo gvim -geom 201x21 -fn 'Terminus (TTF) 14' --role scratchSudoEditor -c 'OpenSession! etc'" (role =? "scratchSudoEditor")
         (customFloating $ W.RationalRect 0 0 1 0.5)
     , NS "luakit" "luakit" (className =? "luakit") 
         (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))

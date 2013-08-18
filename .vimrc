@@ -7,8 +7,10 @@ call vundle#rc()
 "---[ Environment ]---"
 
 Bundle 'L9'
+Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
 Bundle 'tpope/vim-fugitive'
+Bundle 'vcscommand.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'scrooloose/nerdtree'
@@ -17,34 +19,41 @@ Bundle 'tpope/vim-surround'
 Bundle 'FuzzyFinder'
 Bundle 'ack.vim'
 Bundle 'NERD_Tree-and-ack'
-Bundle 'neocomplcache'
+"Bundle 'ucompleteme'
 Bundle 'matchit.zip'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'Indent-Guides'
+"Bundle 'Indent-Guides'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'Raimondi/delimitMate'
 Bundle 'colorizer'
-Bundle 'Syntastic'
+Bundle 'scrooloose/syntastic'
 Bundle 'Gundo'
-Bundle 'Conque-Shell'
+"Bundle 'Conque-Shell'
 Bundle 'fontzoom.vim'
-"Bundle 'SyntaxComplete'
 
 "---[ Filetypes ]---"
 
-Bundle 'tpope/vim-rails.git'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'wookiehangover/jshint.vim'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'marijnh/tern_for_vim'
+Bundle 'vim-json-bundle'
+Bundle 'elzr/vim-json'
 Bundle 'gkz/vim-ls.git'
+Bundle 'tpope/vim-rails.git'
 Bundle 'vim-coffee-script'
-"Bundle 'coffee.vim'
-" Bundle 'tpope/vim-haml'
 Bundle 'vim-stylus'
 Bundle 'less.vim'
 Bundle 'jade.vim'
+Bundle 'avr.vim'
+
+"Bundle 'coffee.vim'
+" Bundle 'tpope/vim-haml'
 " Bundle 'skammer/vim-css-color'
-Bundle 'vim-json-bundle'
 " Bundle 'javaScriptLint.vim'
 " Bundle 'jsbeautify'
 " Bundle 'pangloss/vim-javascript'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'avr.vim'
 
 "---[ Colors ]---"
 
@@ -57,7 +66,7 @@ Bundle 'Zenburn'
 
 language C
 
-set gfn=Terminus\ (TTF)\ for\ Powerline\ 15
+set gfn=Terminus\ (TTF)\ for\ Powerline\ 12
 set ttyfast		
 set t_Co=256
 set relativenumber
@@ -129,8 +138,13 @@ set fileformats=unix,dos,mac
 "---[ Keyboard Layout ]---"
 
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
-nnoremap <C-к> <C-r>
+nnoremap <C-к> :redo<CR>
+nnoremap г :undo<CR>
 inoremap <A-ц> <A-w>
+nnoremap <C-в> <C-d>
+nnoremap <C-г> <C-u>
+nnoremap . /
+
 
 "set termencoding=latin1
 set keymap=russian-jcukenwin    " переключение раскладок клавиатуры по C-^
@@ -174,8 +188,19 @@ nnoremap <C-l> l
 nnoremap <C-h> h
 noremap <C-j> jzz
 nnoremap <C-k> kzz
-inoremap <A-i> <Esc>l
 inoremap <Enter> <Esc>l
+
+"---[ Alt insert mode moving ]---"
+inoremap <A-i> <Esc>
+inoremap <A-a> <Esc>l
+inoremap <A-I> <Esc>I
+inoremap <A-A> <Esc>A
+" fix normal mode reflexes)
+nnoremap <A-i> i
+nnoremap <A-a> a
+nnoremap <A-I> I
+nnoremap <A-A> A
+
 inoremap <A-o> <Esc>o
 inoremap <A-C-O> <Esc><S-O>
 inoremap <A-u> <Esc>u
@@ -192,11 +217,11 @@ vnoremap > >gv
 
 "---[ Автодополнение ]---"
 
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-TAB>  pumvisible() ? "\<C-p>" : "\<C-TAB>"
-inoremap <C-Space> <C-x><C-o> 
-inoremap <C-S-Space> <C-X><C-N>
-inoremap <A-C-Space> <C-X><C-]>
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><C-TAB>  pumvisible() ? "\<C-p>" : "\<C-TAB>"
+"inoremap <C-Space> <C-x><C-o> 
+"inoremap <C-S-Space> <C-X><C-N>
+"inoremap <A-C-Space> <C-X><C-]>
 
 "---[ Буферы и окна ]---"
 
@@ -260,7 +285,8 @@ let g:miniBufExplMaxSize = 3
 
 "---[ sessions ]---"
 
-let g:session_autoload = 0 
+let g:session_autoload = 0
+let g:session_autosave = 'no'
 set sessionoptions=buffers,curdir,folds,tabpages
 
 "---[ NERDTree ]---"
@@ -308,7 +334,7 @@ let g:Powerline_colorscheme = 'default'
 
 "au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
-let g:used_javascript_libs = 'prelude,angularjs' 
+"let g:used_javascript_libs = 'prelude,angularjs' 
 
 "---[ LiveScript ]---"
 
@@ -330,6 +356,10 @@ endfunction
 "au BufNewFile,BufReadPost,BufEnter *.ls call LiveScriptBuf()
 autocmd FileType ls call LiveScriptBuf() 
 
+"---[ Javascript Libraries ]---------------
+
+let g:used_javascript_libs = 'prelude,jquery,angularjs' 
+
 "---[ Auto ]---"
 
 autocmd BufReadPost *
@@ -341,44 +371,68 @@ autocmd BufReadPost *
 
 iabbrev </ </<C-X><C-O>
 
+"---[ Completion ]----
 
+let g:ycm_semantic_triggers =  {
+  \   'c' : ['->', '.'],
+  \   'objc' : ['->', '.'],
+  \   'ocaml' : ['.', '#'],
+  \   'cpp,objcpp' : ['->', '.', '::'],
+  \   'perl' : ['->'],
+  \   'php' : ['->', '::'],
+  \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go,ls' : ['.'],
+  \   'ruby' : ['.', '::'],
+  \   'lua' : ['.', ':'],
+  \   'erlang' : [':'],
+  \ }
+
+"if has("autocmd") && exists("+omnifunc")
+	"autocmd Filetype *
+				"\	if &omnifunc == "" |
+				"\		setlocal omnifunc=syntaxcomplete#Complete |
+				"\	endif
+    "endif
+    "
+"---[ Syntastic ] ----
+let g:syntastic_check_on_open=1
+    "
 "---[ NeoCompCache ]---"
 
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 2
+"let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_smart_case = 1
+"let g:neocomplcache_enable_camel_case_completion = 1
+"let g:neocomplcache_enable_underbar_completion = 1
+"let g:neocomplcache_min_syntax_length = 2
 
-inoremap <expr><CR>   pumvisible() ? neocomplcache#complete_common_string() : "\<Esc>l"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><Esc>  pumvisible() ? neocomplcache#smart_close_popup() : "\<Esc>"
+"inoremap <expr><CR>   pumvisible() ? neocomplcache#complete_common_string() : "\<Esc>l"
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><Esc>  pumvisible() ? neocomplcache#smart_close_popup() : "\<Esc>"
 
-autocmd FileType css            setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown  setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType css            setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown  setlocal omnifunc=htmlcomplete#CompleteTags
 "autocmd FileType javascript     setlocal omnifunc=javascriptcomplete#CompleteJS
 "autocmd FileType ls             setlocal omnifunc=syntaxcomplete#Complete
-autocmd FileType python         setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml            setlocal omnifunc=xmlcomplete#CompleteTags
-setlocal omnifunc=syntaxcomplete#Complete
+"autocmd FileType python         setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml            setlocal omnifunc=xmlcomplete#CompleteTags
+"setlocal omnifunc=syntaxcomplete#Complete
 
-" Enable heavy omni completion, which require computational power and may stall the vim. 
-"if !exists('g:neocomplcache_omni_patterns')
-  "let g:neocomplcache_omni_patterns = {}
-"endif
-"let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+"" Enable heavy omni completion, which require computational power and may stall the vim. 
+""if !exists('g:neocomplcache_omni_patterns')
+  ""let g:neocomplcache_omni_patterns = {}
+""endif
+""let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-"let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-""let g:neocomplcache_omni_patterns.ls = '[^. *\t]\.\w*\|\h\w*::'
-""autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-"let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-"let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+""let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+"""let g:neocomplcache_omni_patterns.ls = '[^. *\t]\.\w*\|\h\w*::'
+"""autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+""let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+""let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+""let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
-let g:acp_behaviorUserDefinedMeets = 'acp#meetsForKeyword'
-let g:acp_behaviorUserDefinedFunction = 'syntaxcomplete#Complete'
+"let g:acp_behaviorUserDefinedMeets = 'acp#meetsForKeyword'
+"let g:acp_behaviorUserDefinedFunction = 'syntaxcomplete#Complete'
 
 "---[ Powerline ]---"
 

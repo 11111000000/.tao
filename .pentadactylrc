@@ -32,7 +32,6 @@ map <A-k> :wincmd k<CR>
 map <A-h> :wincmd h<CR>
 map <A-l> :wincmd l<CR>
 
-map <A-`> :emenu Tools.Web Developer.Developer Toolbar<CR>
 map <A-a> :firebug console-focus<CR>
 map <A-c> :firebug console-clear<CR>
 
@@ -134,10 +133,6 @@ map <A-о> :wincmd j<CR>
 map <A-л> :wincmd k<CR>
 map <A-р> :wincmd h<CR>
 map <A-д> :wincmd l<CR>
-
-map <A-ё> <F12>
-map <A-ф> :firebug console-focus<CR>
-map <A-ч> :firebug console-clear<CR>
 
 map в <Esc>
 map <A-в> :tabclose<CR>

@@ -123,14 +123,14 @@
     # xev might be helpful to find names for keys
 
     # close notification
-    close = mod1+Escape
+    close = mod1+space
 
     # close all notifications
-    #close_all = mod2+c
+    close_all = mod2+space
 
     # redisplay last message(s)
     # On the US keyboard layout 'grave' is normally above TAB and left of '1'.
-    history = mod1+space
+    #history = mod1+
 
     # context menu
     #context = ctrl+shift+period
