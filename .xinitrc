@@ -16,7 +16,7 @@ xset -b
 # TODO MAKEPKG:
 #/home/az/bin/checkbatteryd &
 # ---
-#compton &
+compton &
 #setxkbmap -layout us,ru
 setxkbmap -option terminate:ctrl_alt_bksp
 

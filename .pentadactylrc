@@ -1,10 +1,14 @@
 set autocomplete=0
 colorscheme zenburn
 set scroll=10
+" disable smooth scroll (bug: http://code.google.com/p/dactyl/issues/detail?id=1055)
+se scs=1
 set guioptions-=m
 set guioptions+=T
 set guioptions+=s
 "set tabopen=link:right,orphan:end,external:end
+
+set loadplugins='\.(css|js|penta)$'
 
 map <C-W> <Esc>
 map <C-Q> <Esc>
@@ -149,3 +153,4 @@ map <C-W>d :tabclose<CR>
 
 " styles
 style * input { background:#fff; color: #000; }
+

@@ -87,7 +87,7 @@ set novisualbell
 set t_vb=	
 "set background=light
 syntax on
-colorscheme dao 
+colorscheme tao 
 set laststatus=2
 
 au WinLeave * set nocursorline nocursorcolumn
