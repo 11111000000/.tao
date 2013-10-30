@@ -1,6 +1,7 @@
 --type-set=tpl=.tpl
 --type-set=less=.less
 --type-set=livescript=.ls
+--type-set=javascript=.js
 --type-set=coffeescript=.coffee
 --type-set=jade=.jade
 --type-set=stylus=.styl

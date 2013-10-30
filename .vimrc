@@ -37,7 +37,7 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'wookiehangover/jshint.vim'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'marijnh/tern_for_vim'
+"Bundle 'marijnh/tern_for_vim'
 Bundle 'vim-json-bundle'
 Bundle 'elzr/vim-json'
 Bundle 'gkz/vim-ls.git'
@@ -328,7 +328,7 @@ hi EasyMotionShade  guifg=#7F7F7F
 "---[ Powerline ]---"
 
 let g:Powerline_symbols = 'fancy'
-let g:Powerline_colorscheme = 'default'
+let g:Powerline_colorscheme = 'tao'
 
 "---[ Javascript libs ]---"
 
