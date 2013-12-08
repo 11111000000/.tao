@@ -11,18 +11,20 @@ Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vcscommand.vim'
-Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
-Bundle 'FuzzyFinder'
+Bundle 'ctrlp.vim'
+"Bundle 'FuzzyFinder'
 Bundle 'ack.vim'
 Bundle 'NERD_Tree-and-ack'
-"Bundle 'ucompleteme'
+"Bundle 'troydm/easytree.vim'
 Bundle 'matchit.zip'
-Bundle 'Lokaltog/vim-powerline'
-"Bundle 'Indent-Guides'
+"Bundle 'Lokaltog/vim-powerline'
+"Bundle 'bling/vim-airline'
+Bundle 'itchyny/lightline.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Raimondi/delimitMate'
 Bundle 'colorizer'
@@ -30,6 +32,15 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Gundo'
 "Bundle 'Conque-Shell'
 Bundle 'fontzoom.vim'
+"Bundle 'SyntaxComplete'
+Bundle 'reload.vim'
+Bundle 'moll/vim-bbye'
+"Bundle "myusuf3/numbers.vim"
+Bundle 'terryma/vim-smooth-scroll'
+Bundle 'joeytwiddle/sexy_scroller.vim'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
+
 
 "---[ Filetypes ]---"
 
@@ -37,16 +48,17 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'wookiehangover/jshint.vim'
 Bundle 'Valloric/YouCompleteMe'
-"Bundle 'marijnh/tern_for_vim'
-Bundle 'vim-json-bundle'
+Bundle 'marijnh/tern_for_vim'
+"Bundle 'vim-json-bundle'
 Bundle 'elzr/vim-json'
 Bundle 'gkz/vim-ls.git'
-Bundle 'tpope/vim-rails.git'
+"Bundle 'tpope/vim-rails.git'
 Bundle 'vim-coffee-script'
 Bundle 'vim-stylus'
 Bundle 'less.vim'
 Bundle 'jade.vim'
-Bundle 'avr.vim'
+
+"Bundle 'mhinz/vim-startify'
 
 "Bundle 'coffee.vim'
 " Bundle 'tpope/vim-haml'
@@ -66,28 +78,40 @@ Bundle 'Zenburn'
 
 language C
 
-set gfn=Terminus\ (TTF)\ for\ Powerline\ 12
-set ttyfast		
+"set gfn=Terminus\ (TTF)\ for\ Powerline\ 12
+set gfn=Anka/Coder\ Narrow\ 12
+set antialias=on
+"set guifont=Droid\ Sans\ Mono\ Slashed\ for\ Powerline\ 10 
+set ghr=0   " stolen pixels
+set ttyfast
 set t_Co=256
-set relativenumber
-set numberwidth=3
+set nonumber
+set norelativenumber
+"set currentnumber=0
+"set numberwidth
 set mouse=
+set fillchars=""
 set showtabline=1
 set guioptions=agitc
 set guicursor=n:blinkon0
-"set guioptions-=e	    
+set splitbelow
+set wildmenu
+set showcmd
+set vb
+"set guioptions-=e
 "set guioptions-=m
-"set guioptions-=T	    
+"set guioptions-=T
 "set guioptions-=l
 "set guioptions-=L
 "set guioptions-=r
 "set guioptions-=b
-set noerrorbells	
-set novisualbell	
-set t_vb=	
+set noerrorbells
+set novisualbell
+set t_vb=
 "set background=light
 syntax on
-colorscheme tao 
+colorscheme tao
+set bg=light
 set laststatus=2
 
 au WinLeave * set nocursorline nocursorcolumn
@@ -106,13 +130,16 @@ set hlsearch
 
 set nocompatible
 set hidden
+set history=1024
 set directory=~/.vim/tmp
-set nobackup		    
-set nowritebackup	
-set noswapfile		   
+set nobackup
+set nowritebackup
+set noswapfile
 set clipboard=unnamedplus
-set undofile 
+set undofile
 set undodir=~/.vim/undo/
+set undolevels=1000
+set undoreload=10000
 filetype on
 filetype plugin on
 filetype indent on
@@ -121,19 +148,19 @@ set foldlevel=0
 
 "---[ Editing ]---"
 
-set lsp=0  
+set lsp=0
 set backspace=2
 set nowrap
 set tabstop=2
-set shiftwidth=2		 
-set expandtab			       
-set smarttab			 
-set scroll=10
-set scrolloff=3
-set autoindent		
+set shiftwidth=2
+set expandtab
+set smarttab
+set scroll=0
+set scrolloff=10
+set autoindent
 set fileformats=unix,dos,mac
 "set cindent
-"set smartindent			
+"set smartindent
 
 "---[ Keyboard Layout ]---"
 
@@ -151,10 +178,10 @@ set keymap=russian-jcukenwin    " переключение раскладок к
 set iminsert=0                  " раскладка по умолчанию для ввода - английская
 set imsearch=0                  " раскладка по умолчанию для поиска - английская
 
-cmap <silent> <C-F> <C-^>
-imap <silent> <C-F> <C-^>X<Esc>:call MyKeyMapHighlight()<CR>a<C-H>
-nmap <silent> <C-F> a<C-^><Esc>:call MyKeyMapHighlight()<CR>
-vmap <silent> <C-F> <Esc>a<C-^><Esc>:call MyKeyMapHighlight()<CR>gv
+"cmap <silent> <C-F> <C-^>
+"imap <silent> <C-F> <C-^>X<Esc>:call MyKeyMapHighlight()<CR>a<C-H>
+"nmap <silent> <C-F> a<C-^><Esc>:call MyKeyMapHighlight()<CR>
+"vmap <silent> <C-F> <Esc>a<C-^><Esc>:call MyKeyMapHighlight()<CR>gv
 
 function MyKeyMapHighlight()
     if &iminsert == 0
@@ -184,11 +211,15 @@ vnoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 nnoremap K <nop>
-nnoremap <C-l> l
-nnoremap <C-h> h
+nnoremap <C-l> zl
+nnoremap <C-h> zh
 noremap <C-j> jzz
 nnoremap <C-k> kzz
 inoremap <Enter> <Esc>l
+nnoremap J <Down>
+nnoremap K <Up>
+nnoremap H <Left>
+nnoremap L <Right>
 
 "---[ Alt insert mode moving ]---"
 inoremap <A-i> <Esc>
@@ -203,12 +234,12 @@ nnoremap <A-A> A
 
 inoremap <A-o> <Esc>o
 inoremap <A-C-O> <Esc><S-O>
-inoremap <A-u> <Esc>u
+inoremap <A-u> <Esc>ui
 inoremap <A-r> <Esc><C-r>
-inoremap <A-j> <Down>
-inoremap <A-k> <Up>
-inoremap <A-h> <Left>
-inoremap <A-l> <Right>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
 
 "---[ Редактирование ]---"
 
@@ -219,7 +250,7 @@ vnoremap > >gv
 
 "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 "inoremap <expr><C-TAB>  pumvisible() ? "\<C-p>" : "\<C-TAB>"
-"inoremap <C-Space> <C-x><C-o> 
+"inoremap <C-Space> <C-x><C-o>
 "inoremap <C-S-Space> <C-X><C-N>
 "inoremap <A-C-Space> <C-X><C-]>
 
@@ -227,6 +258,7 @@ vnoremap > >gv
 
 nnoremap <A-C-h> :bp<CR>
 nnoremap <A-C-l> :bn<CR>
+nnoremap <A-S-d> :Bdelete<CR>
 nnoremap <A-d> <C-W>c
 nnoremap <A-j> <C-W>j
 nnoremap <A-k> <C-W>k
@@ -268,8 +300,9 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 "nnoremap / /\v
-nnoremap <A-;> A;<Esc>
-inoremap <A-;> <Esc>A;<Esc>
+"nnoremap <A-;> A;<Esc>
+"inoremap <A-;> <Esc>A;<Esc>
+nnoremap ; q:<Esc>
 nnoremap <A-e> :e ~/.vimrc<CR>
 
 "---[ PLUGINS ]---"
@@ -281,7 +314,7 @@ inoremap <A-~> <Esc>:TagbarToggle<CR>i
 
 "---[ miniBuffer ]---"
 
-let g:miniBufExplMaxSize = 3 
+let g:miniBufExplMaxSize = 3
 
 "---[ sessions ]---"
 
@@ -289,58 +322,35 @@ let g:session_autoload = 0
 let g:session_autosave = 'no'
 set sessionoptions=buffers,curdir,folds,tabpages
 
-"---[ NERDTree ]---"
-
-let g:NERDTreeChristmasTree = 1
-let g:NERDTreeCaseSensitiveSort = 1
-let g:NERDTreeQuitOnOpen = 0
-let g:NERDTreeWinPos = 'left'
-let g:NERDTreeMinimalUI = 1
-"let g:NERDTreeWinSize = 50
-let g:NERDTreeShowBookmarks = 1
-nnoremap <A-`> :NERDTreeToggle<CR><C-L>
-
 "---[ NERDCommenter ]---"
 
 nnoremap <A-c> :call NERDComment(0, "toggle")<cr>
 vnoremap <A-c> :call NERDComment(0, "toggle")<cr>
 
-"---[ MiniBuf ]---"
-
-"nnoremap <C-E> :TMiniBufExplorer<CR>
-let g:miniBufExplMaxSize = 2
-
-"---[ FuzzyFinder ]---"
-
-nmap <A-o> :FufCoverageFile<CR>
-nmap <A-f> :FufFile<CR>
-nmap <A-b> :FufBuffer<CR>
-
-"---[ EasyMotion ]---"
-
-hi EasyMotionTarget guibg=#F8F893 guifg=#4E4E4E gui=bold
-hi EasyMotionShade  guifg=#7F7F7F
-
-"---[ Solarized ]---"
-
-"call togglebg#map("<F5>")
-
-"---[ Powerline ]---"
-
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_colorscheme = 'tao'
-
-"---[ Javascript libs ]---"
-
-"au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-
-"let g:used_javascript_libs = 'prelude,angularjs' 
+"---[ CtrlP ]---"
+nmap <A-o> :CtrlPCurWD<CR>
+nmap <A-b> :CtrlPBuffer<CR>
+nmap <C-f> :CtrlPCurWD<CR>
+nmap <C-f> :CtrlPCurWD<CR>
+nmap <C-b> :CtrlPBuffer<CR>
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|undo)$',
+  \ 'file': '\v\.(exe|so|dll|png|gif|jpg)$',
+  \ 'other': '\v^(\%\w*)'
+  \ }
+let g:ctrlp_working_path_mode = 'ar'
+let g:ctrlp_match_window_bottom = 1
+let g:ctrlp_tabpage_position = 'ac'
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_show_hidden = 0
+let g:ctrlp_open_multiple_files = 'vjr'
 
 "---[ LiveScript ]---"
 
 let g:ls_make_options="-bc"
-"au BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
-
 function LiveScriptBuf()
   syntax sync fromstart
   setlocal foldmethod=indent
@@ -349,23 +359,22 @@ function LiveScriptBuf()
   nmap <A-m> <Esc>:LiveScriptCompile watch vertical<cr>
   iabbrev <silent> <buffer> con console.log
   "setl scrollbind
-  "nmap <A-M> <Esc>:LiveScriptMake!<cr>
-  "setlocal omnifunc=syntaxcomplete#Complete
+  setlocal omnifunc=syntaxcomplete#Complete
 endfunction
 
 "au BufNewFile,BufReadPost,BufEnter *.ls call LiveScriptBuf()
-autocmd FileType ls call LiveScriptBuf() 
+autocmd FileType ls call LiveScriptBuf()
 
 "---[ Javascript Libraries ]---------------
 
-let g:used_javascript_libs = 'prelude,jquery,angularjs' 
+let g:used_javascript_libs = 'prelude,jquery,angularjs,requirejs,backbone'
 
 "---[ Auto ]---"
 
-autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \   exe "normal g`\"" |
-  \ endif
+"autocmd BufReadPost *
+  "\ if line("'\"") > 0 && line("'\"") <= line("$") |
+  "\   exe "normal g`\"" |
+  "\ endif
 
 "---[ Abbrev ]---"
 
@@ -380,61 +389,51 @@ let g:ycm_semantic_triggers =  {
   \   'cpp,objcpp' : ['->', '.', '::'],
   \   'perl' : ['->'],
   \   'php' : ['->', '::'],
-  \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go,ls' : ['.'],
+  \   'cs,,javascript,d,vim,python,perl6,scala,vb,elixir,go,LiveScript,LiveScriptBuf' : ['.'],
   \   'ruby' : ['.', '::'],
   \   'lua' : ['.', ':'],
   \   'erlang' : [':'],
+  \   'stylus,css,less' : [':', ' ']
   \ }
 
 "if has("autocmd") && exists("+omnifunc")
-	"autocmd Filetype *
-				"\	if &omnifunc == "" |
-				"\		setlocal omnifunc=syntaxcomplete#Complete |
-				"\	endif
-    "endif
-    "
+"autocmd Filetype *
+"\	if &omnifunc == "" |
+"\		setlocal omnifunc=syntaxcomplete#Complete |
+"\	endif
+"endif
+"
 "---[ Syntastic ] ----
 let g:syntastic_check_on_open=1
     "
-"---[ NeoCompCache ]---"
+"---[ indent guides ]---
+let g:indent_guides_color_change_percent = 3
 
-"let g:neocomplcache_enable_at_startup = 1
-"let g:neocomplcache_enable_smart_case = 1
-"let g:neocomplcache_enable_camel_case_completion = 1
-"let g:neocomplcache_enable_underbar_completion = 1
-"let g:neocomplcache_min_syntax_length = 2
+"---[ numbers ]---
+"let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m']$
 
-"inoremap <expr><CR>   pumvisible() ? neocomplcache#complete_common_string() : "\<Esc>l"
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-"inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><Esc>  pumvisible() ? neocomplcache#smart_close_popup() : "\<Esc>"
+"---[ NERDTree ]---"
 
-"autocmd FileType css            setlocal omnifunc=csscomplete#CompleteCSS
-"autocmd FileType html,markdown  setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType javascript     setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType ls             setlocal omnifunc=syntaxcomplete#Complete
-"autocmd FileType python         setlocal omnifunc=pythoncomplete#Complete
-"autocmd FileType xml            setlocal omnifunc=xmlcomplete#CompleteTags
-"setlocal omnifunc=syntaxcomplete#Complete
+let g:NERDTreeChristmasTree = 1
+let g:NERDTreeCaseSensitiveSort = 1
+let g:NERDTreeQuitOnOpen = 0
+let g:NERDTreeWinPos = 'left'
+let g:NERDTreeMinimalUI = 1
+"let g:NERDTreeWinSize = 50
+let g:NERDTreeShowBookmarks = 1
+nnoremap <A-`> :NERDTreeToggle<CR><C-L>
 
-"" Enable heavy omni completion, which require computational power and may stall the vim. 
-""if !exists('g:neocomplcache_omni_patterns')
-  ""let g:neocomplcache_omni_patterns = {}
-""endif
-""let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+"---[ SexyScrolling ]----
+let g:SexyScroller_Enabled=1
+let g:SexyScroller_CursorTime = 20
+let g:SexyScroller_ScrollTime = 20
+let g:SexyScroller_MaxTime = 1000
+let g:SexyScroller_EasingStyle = 2
+let g:SexyScroller_DetectPendingKeys = 1 
+"---[ SmoothScroll ]----
+"noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 1)<CR>
+"noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 1)<CR>
 
-""let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-"""let g:neocomplcache_omni_patterns.ls = '[^. *\t]\.\w*\|\h\w*::'
-"""autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-""let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-""let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-""let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+"----[ LIGHTLINE ]---
 
-"let g:acp_behaviorUserDefinedMeets = 'acp#meetsForKeyword'
-"let g:acp_behaviorUserDefinedFunction = 'syntaxcomplete#Complete'
-
-"---[ Powerline ]---"
-
-"set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-
+source ~/.lightline.vim

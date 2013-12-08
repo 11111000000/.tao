@@ -70,7 +70,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_e     ), namedScratchpadAction myScratchpads "sudoeditor")
     , ((modm,               xK_i     ), namedScratchpadAction myScratchpads "htop")
     , ((modm,               xK_f     ), namedScratchpadAction myScratchpads "ranger")
-    , ((modm,               xK_w     ), namedScratchpadAction myScratchpads "weechat")
+    {-, ((modm,               xK_w     ), namedScratchpadAction myScratchpads "weechat")-}
     , ((modm,               xK_v     ), namedScratchpadAction myScratchpads "alsamixer")
     , ((modm,               xK_n     ), namedScratchpadAction myScratchpads "mpd")
     --, ((modm,               xK_grave     ), namedScratchpadAction myScratchpads "console")
