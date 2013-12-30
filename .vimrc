@@ -15,11 +15,12 @@ Bundle 'vcscommand.vim'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
+"Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'NERD_Tree-and-ack'
 Bundle 'tpope/vim-surround'
 Bundle 'ctrlp.vim'
 "Bundle 'FuzzyFinder'
 Bundle 'ack.vim'
-Bundle 'NERD_Tree-and-ack'
 "Bundle 'troydm/easytree.vim'
 Bundle 'matchit.zip'
 "Bundle 'Lokaltog/vim-powerline'
@@ -36,10 +37,11 @@ Bundle 'fontzoom.vim'
 Bundle 'reload.vim'
 Bundle 'moll/vim-bbye'
 "Bundle "myusuf3/numbers.vim"
-Bundle 'terryma/vim-smooth-scroll'
+"Bundle 'terryma/vim-smooth-scroll'
 Bundle 'joeytwiddle/sexy_scroller.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
+Bundle 'airblade/vim-gitgutter'
 
 
 "---[ Filetypes ]---"
@@ -410,7 +412,7 @@ let g:syntastic_check_on_open=1
 let g:indent_guides_color_change_percent = 3
 
 "---[ numbers ]---
-"let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m']$
+"let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'nerdtree]$
 
 "---[ NERDTree ]---"
 
@@ -422,17 +424,26 @@ let g:NERDTreeMinimalUI = 1
 "let g:NERDTreeWinSize = 50
 let g:NERDTreeShowBookmarks = 1
 nnoremap <A-`> :NERDTreeToggle<CR><C-L>
+"nnoremap <A-`> :NERDTreeTabsToggle<CR><C-L>
 
-"---[ SexyScrolling ]----
-let g:SexyScroller_Enabled=1
-let g:SexyScroller_CursorTime = 20
-let g:SexyScroller_ScrollTime = 20
-let g:SexyScroller_MaxTime = 1000
-let g:SexyScroller_EasingStyle = 2
-let g:SexyScroller_DetectPendingKeys = 1 
 "---[ SmoothScroll ]----
 "noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 1)<CR>
 "noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 1)<CR>
+
+"---[ SexyScrolling ]----
+"
+let g:SexyScroller_Enabled=1
+let g:SexyScroller_CursorTime = 5
+let g:SexyScroller_ScrollTime = 20
+let g:SexyScroller_MaxTime = 500
+let g:SexyScroller_EasingStyle = 1
+let g:SexyScroller_DetectPendingKeys = 1 
+
+"---[ GitGutter ]----
+
+let g:gitgutter_enabled = 0
+let g:gitgutter_highlight_lines = 0
+let g:gitgutter_realtime = 0
 
 "----[ LIGHTLINE ]---
 

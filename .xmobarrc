@@ -1,14 +1,15 @@
-Config { font = "xft:Terminus (TTF):size=14"
-       , bgColor = "#4B4B4B"
-       , fgColor = "#c0c0a0"
+Config { font = "xft:BabelStone Modern:size=12"
+       , bgColor = "#555555"
+       , fgColor = "#bbbbbb"
        , position = TopW L 84
        , lowerOnStart = True
        , commands = [ 
-                      Run Battery ["--Low","15","--High","25","--low","#ee0000","--normal","#FF5D1D","--high","#25FF16","-t", "<left>%"] 50
-                    , Run Date "%a %_d %b  <fc=#C0B7F5>%H:%M</fc>" "date" 10
+                      Run Battery ["--Low","15","--High","25","--low","#000","--normal","#252525","--high","#989898","-t", "<left>"] 50
+                    , Run Date "<fc=#cccccc>%a %_d %b</fc>  <fc=#eeeeee>%H:%M</fc>" "date" 10
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
        , template = "%StdinReader%}{[%battery%] <fc=#ffffff>%date%</fc> "
+       , border = NoBorder
        }

@@ -10,15 +10,15 @@ endif
 let colors_name = "tao"
 
 if &background == "light"
-  hi Normal       guifg=#616161      guibg=#fefefe   gui=NONE
-  hi IncSearch    guifg=#fefefe      guibg=#525252   gui=NONE
-  hi Search       guifg=#fefefe      guibg=#525252   gui=NONE
+  hi Normal       guifg=#595959      guibg=#fefefe   gui=NONE
+  hi IncSearch    guifg=#fefefe      guibg=#505050   gui=NONE
+  hi Search       guifg=#fefefe      guibg=#9a9a9a   gui=NONE
   hi MatchParen   guifg=#000000      guibg=#9a9a9a   gui=bold
   hi Cursor       guifg=bg           guibg=#424242   gui=NONE
   hi CursorIM     guifg=bg           guibg=fg        gui=NONE
-  hi lCursor      guifg=bg           guibg=fg        gui=NONE
-  hi CursorLine   guifg=NONE         guibg=#f1f1f1   gui=NONE
-  hi CursorColumn guifg=NONE         guibg=#f0f0f0   gui=NONE
+  hi lCursor      guifg=bg           guibg=#313131   gui=NONE
+  hi CursorLine   guifg=NONE         guibg=#f7f7f7   gui=NONE
+  hi CursorColumn guifg=#818181         guibg=#f9f9f9      gui=NONE
   hi LineNr       guifg=#e0e0e0      guibg=bg        gui=NONE
   hi CursorLineNr guifg=#c5c5c5      guibg=#f7f7f7   gui=NONE
 
@@ -28,7 +28,7 @@ if &background == "light"
   hi Identifier   guifg=#505050      guibg=NONE      gui=NONE
   hi Label        guifg=#717171      guibg=NONE      gui=underline,bold
 
-  hi Keyword      guifg=#333333      guibg=NONE       gui=bold
+  hi Keyword      guifg=#333333      guibg=NONE      gui=bold
   hi Statement    guifg=#333333      guibg=NONE      gui=bold
   hi Conditional  guifg=#333333      guibg=NONE      gui=bold
 
@@ -44,7 +44,7 @@ if &background == "light"
   hi Directory    guifg=#424242      guibg=bg        gui=NONE
   hi ErrorMsg     guifg=#6f6f6f      guibg=NONE      gui=NONE
   hi FoldColumn   guifg=#555555      guibg=#aaaaaa   gui=bold
-  hi Folded       guifg=#cccccc      guibg=bg   gui=italic
+  hi Folded       guifg=#cccccc      guibg=bg        gui=italic
   hi ModeMsg      guifg=#000000      guibg=#767676   gui=bold
   hi MoreMsg      guifg=#7c7c7c      guibg=bg        gui=bold
   hi NonText      guifg=#f1f1f1      guibg=bg        gui=bold
@@ -147,7 +147,7 @@ else
   hi Directory    guifg=#929292          guibg=bg        gui=NONE
   hi ErrorMsg     guifg=#6f6f6f          guibg=NONE      gui=NONE
   hi FoldColumn   guifg=#555555          guibg=#414141   gui=bold
-  hi Folded       guifg=#020202          guibg=#212121      gui=italic
+  hi Folded       guifg=#020202          guibg=#212121   gui=italic
   hi IncSearch    guifg=#000000          guibg=#aaaaaa   gui=NONE
   hi Search       guifg=#000000          guibg=#aaaaaa   gui=NONE
   hi MatchParen   guifg=#000000          guibg=#aaaaaa   gui=bold
@@ -161,7 +161,7 @@ else
   hi Visual       guifg=#ffffff          guibg=#515151   gui=NONE
   hi VisualNOS    guifg=#cccccc          guibg=#515151   gui=none
 
-  hi Title        guifg=#777777          guibg=NONE        gui=bold
+  hi Title        guifg=#777777          guibg=NONE      gui=bold
   hi VertSplit    guifg=bg               guibg=bg
 
   hi Pmenu        guifg=#656565          guibg=#3f3f3f   gui=NONE

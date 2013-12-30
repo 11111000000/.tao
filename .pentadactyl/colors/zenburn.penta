@@ -2,8 +2,8 @@
 " Author: zouyang
 " Last Updated: Fri 07 Oct 2011 00:07:19 AM CST
 
-hi Cmd                                          background-color:#3F3F3F;  font-family: "Terminus (TTF)";
-hi -a StatusLine                                font-family: "Terminus (TTF)" !important; font-size: 14px !important;
+hi Cmd                                          background-color:#3F3F3F;  font-family: "BabelStone Modern";
+hi -a StatusLine                                font-family: "BabelStone Modern" !important; font-size: 14px !important;
 hi -a StatusLineNormal                          color:#ccdc90; background-color:#3F3F3F !important;
 hi -a 'StatusLineBroken [dactyl|highlight*="Status"]' background-color:transparent !important;color:#313633 !important;
 hi -a 'StatusLineExtended [dactyl|highlight*="Status"]' background-color:transparent !important;color:#313633 !important;
@@ -13,34 +13,34 @@ hi -a String                                    color:#cc9393;
 hi -a Boolean                                   color:#dca3a3;
 hi -a Function                                  color:#efef8f;
 hi -a Number                                    color:#8cd0d3;
-hi WarningMsg                                   color:#ffffff; font-weight:bold; font-family: "Terminus (TTF)";
-hi WarningMsg>*                                 color:#ffffff; font-weight:bold; font-family: "Terminus (TTF)";
+hi WarningMsg                                   color:#ffffff; font-weight:bold; font-family: "BabelStone Modern";
+hi WarningMsg>*                                 color:#ffffff; font-weight:bold; font-family: "BabelStone Modern";
 hi -l WarningMsg StatusWarningMsg
 hi -l WarningMsg CmdWarningMsg
-hi ErrorMsg                                     color:#80d4aa !important; font-weight:bold; font-family: "Terminus (TTF)";
+hi ErrorMsg                                     color:#80d4aa !important; font-weight:bold; font-family: "BabelStone Modern";
 hi -l ErrorMsg StatusErrorMsg
 hi -l ErrorMsg CmdErrorMsg
 hi -a ModeMsg                                   color:#ffcfaf; background-color:transparent !important;
 hi -l ModeMsg StatusModeMsg
 hi -l ModeMsg CmdModeMsg
-hi -a MoreMsg                                   color:#ffffff !important; background-color:inherit !important; font-weight:bold; font-family: "Terminus (TTF)";
+hi -a MoreMsg                                   color:#ffffff !important; background-color:inherit !important; font-weight:bold; font-family: "BabelStone Modern";
 hi -l MoreMsg StatusMoreMsg
 hi -l MoreMsg CmdMoreMsg
 hi -l Cmd InfoMsg                               color:#cccccc !important;
 hi -l InfoMsg StatusInfoMsg
 hi -l InfoMsg CmdInfoMsg
-hi Question                                     color:#ffffff !important; background-color:inherit !important; font-weight:bold;  font-family: "Terminus (TTF)";
+hi Question                                     color:#ffffff !important; background-color:inherit !important; font-weight:bold;  font-family: "BabelStone Modern";
 hi -l Question StatusQuestion
 hi -l Question CmdQuestion
-hi -a Tag                                       color:#e89393; font-weight:bold; font-family: "Terminus (TTF)";
-hi -l CmdLine                                   font-weight:normal; padding:0 3px; font-family: "Terminus (TTF)";
-hi -l CmdInput                                  font-family: "Terminus (TTF)"; font-size: 14px; line-height: 10px !important;
-hi -a NonText                                   color:#404040; font-weight:bold; font-family: "Terminus (TTF)";
-hi Normal                                       color:#dcdccc !important; background-color:#3F3F3F !important; font-family: "Terminus (TTF)" !important; font-size:14px; 
-hi -l Normal CmdNormal color:#dcdccc !important; background-color:#3F3F3F !important; font-family: "Terminus (TTF)" !important; font-size:14px; 
-hi -l Normal StatusNormal color:#dcdccc !important; background-color:#3F3F3F !important; font-family: "Terminus (TTF)" !important; font-size:14px; 
+hi -a Tag                                       color:#e89393; font-weight:bold; font-family: "BabelStone Modern";
+hi -l CmdLine                                   font-weight:normal; padding:0 3px; font-family: "BabelStone Modern";
+hi -l CmdInput                                  font-family: "BabelStone Modern"; font-size: 14px; line-height: 10px !important;
+hi -a NonText                                   color:#404040; font-weight:bold; font-family: "BabelStone Modern";
+hi Normal                                       color:#dcdccc !important; background-color:#3F3F3F !important; font-family: "BabelStone Modern" !important; font-size:14px; 
+hi -l Normal CmdNormal color:#dcdccc !important; background-color:#3F3F3F !important; font-family: "BabelStone Modern" !important; font-size:14px; 
+hi -l Normal StatusNormal color:#dcdccc !important; background-color:#3F3F3F !important; font-family: "BabelStone Modern" !important; font-size:14px; 
 hi -l Normal Indicator                          width:4px;
-hi -a Title                                     color:#efefef; background-color:inherit; font-weight:bold; font-family: "Terminus (TTF)";
+hi -a Title                                     color:#efefef; background-color:inherit; font-weight:bold; font-family: "BabelStone Modern";
 hi -a CompItem[selected]                        background-color:#4c504d !important;
 hi -a CompMore                                  margin-bottom:0;margin-top:.5ex;
 " hi -a CompMore::after                           content:"﹀"
@@ -50,20 +50,20 @@ hi -a CompTitle                                 color:lightblue; background-colo
 hi -a CompTitleSep                              background:-moz-linear-gradient(60deg, lightblue, white); height:1px;
 hi -a CompResult                                width:46%;
 hi -a CompDesc                                  width:52%;
-hi -a Filter                                    font-style:normal; font-weight:bold;  font-family: "Terminus (TTF)";
-hi -a Keyword                                   color:#f0dfaf; font-weight:bold;  font-family: "Terminus (TTF)";
+hi -a Filter                                    font-style:normal; font-weight:bold;  font-family: "BabelStone Modern";
+hi -a Keyword                                   color:#f0dfaf; font-weight:bold;  font-family: "BabelStone Modern";
 hi -a URL                                       text-decoration:none; color:#9ECE9E; background-color:inherit;
 hi -a URL:hover                                 text-decoration:underline; cursor: pointer;
-hi -a LineNr                                    color:#9fafaf; background-color:#262626;  font-family: "Terminus (TTF)";
+hi -a LineNr                                    color:#9fafaf; background-color:#262626;  font-family: "BabelStone Modern";
 
 " REPL
 hi -l Normal REPL
-hi -a REPL                                      font-family:"Terminus (TTF)","Bitstream Vera Sans Mono",Monaco,Consolas,"Courier New",serif;white-space:pre;line-height:1.4em;margin:0 0;padding: 0 0 0 0;
-hi -a REPL-P                                    font-size:92%;margin:0.2em 0;border-bottom:1px dashed #999;font-family: "Terminus (TTF)";
+hi -a REPL                                      font-family:"BabelStone Modern","Bitstream Vera Sans Mono",Monaco,Consolas,"Courier New",serif;white-space:pre;line-height:1.4em;margin:0 0;padding: 0 0 0 0;
+hi -a REPL-P                                    font-size:92%;margin:0.2em 0;border-bottom:1px dashed #999;font-family: "BabelStone Modern";
 hi -a REPL-R
 hi -a REPL-E                                    
 
-hi Hint                 font-family: "Terminus (TTF)"; font-size: 14px; font-weight: bold; color: #385F38; background-color: #F8F893; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding 0px 1px 0px 1px;
+hi Hint                 font-family: "BabelStone Modern"; font-size: 14px; font-weight: bold; color: #385F38; background-color: #F8F893; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding 0px 1px 0px 1px;
 hi Hint::after          content: attr(number);
 hi HintActive           background: #F18C96; color: #333333;
 hi HintElem             background-color: #8FAF9F; color: #000D18;
@@ -72,19 +72,27 @@ hi HintImage            opacity: .5;
 " plugin styles
 hi -a BufTabSelected                            background-color:#000;color:#FFF;
 " specific
-hi -a NonText                                   color:#5b605e; font-weight:bold;  font-family: "Terminus (TTF)";
-hi -a StatusCmdLine                             -moz-box-align:center; font-family: "Terminus (TTF)"; font-size: 14px;
+hi -a NonText                                   color:#5b605e; font-weight:bold;  font-family: "BabelStone Modern";
+hi -a StatusCmdLine                             -moz-box-align:center; font-family: "BabelStone Modern"; font-size: 14px;
 " vim: set ft=pentadactyl:ts=4:sw=4:tw=0:
 style -name statusbar chrome://* <<EOM
-#dactyl-statusline-field-url { font-size: 14px !important;  font-family: "Terminus (TTF)" !important; padding: 0px 0px !important; }
+#dactyl-statusline-field-url { font-size: 14px !important;  font-family: "BabelStone Modern" !important; padding: 0px 0px !important; }
 status-bar > * { height: 15px !important; max-height: 15px !important;}
-statusbarpanel > * { margin: 0 !important; padding: 0 2px 0 0 !important; font-size: 14px !important;  font-family: "Terminus (TTF)" !important;  height: 12px !important;}
-statusbarpanel { margin-bottom: 2000px !important;  font-family: "Terminus (TTF)"; height: 12px !important;}
+statusbarpanel > * { margin: 0 !important; padding: 0 2px 0 0 !important; font-size: 14px !important;  font-family: "BabelStone Modern" !important;  height: 12px !important;}
+statusbarpanel { margin-bottom: 2000px !important;  font-family: "BabelStone Modern"; height: 12px !important;}
 
 #webdeveloper-statusbar-panel { display: none !important;}
 
 /*.tabbrowser-tab { height: 20px !important; line-height: 20px !important; min-height: 1.5em !important; border-radius: 0 !important;}*/
-/*.tabbrowser-tab * { font-family: "Terminus (TTF)" !important; font-size: 14px; background: transparent !important;  border-radius: 0;}*/
+.tabbrowser-tab * { 
+    font-family: "BabelStone Modern" !important; font-size: 14px; background: transparent !important;  border-radius: 0;
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+    filter: grayscale(1) invert(1) brightness(10%) contrast(80%);
+    min-height: 100% !important;
+}
+
+.tabbrowser-tab img {-webkit-filter: invert(1);}
+
 /*.tabbrowser-tab .tab-content {}*/
 
 /*.tabbrowser-tab:hover { */
@@ -116,12 +124,17 @@ statusbarpanel { margin-bottom: 2000px !important;  font-family: "Terminus (TTF)
     /*padding: 0px  4px !important;*/
 /*}*/
 /*#status-bar * {max-height: 18px !important;}*/
-/*toolbar {*/
+toolbar {
   /*max-height:23px !important;*/
-/*}*/
-/*toolbar .toolbar-button-icon {*/
+
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+    filter: grayscale(1) invert(1) brightness(10%) contrast(80%);
+    min-height: 100% !important;
+}
+toolbar .toolbar-button-icon {
   /*max-height:23px !important;*/
-/*}*/
+}
+
+
 tabbrowser-tab { height : 30px !important; line-height:30px !important;}
 EOM
-

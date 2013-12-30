@@ -8,7 +8,7 @@ ZSH=$HOME/.oh-my-zsh
 if [[ "$DISPLAY." == "." ]]; then
  ZSH_THEME="nanotech"
 else
- ZSH_THEME="agnoster"
+ ZSH_THEME="kiwi"
 fi
 
 # Example aliases
@@ -33,7 +33,10 @@ fi
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git svn gnu-utils archlinux systemd taskwarrior vi-visual vi-mode npm node vundle bower zsh-syntax-highlighting history-substring-search)
+plugins=(git github heroku svn gnu-utils archlinux systemd taskwarrior vi-visual \
+  vi-mode npm redis node vundle bower zsh-syntax-highlighting \
+  history-substring-search battery autojump colored-man \
+  colorize command-not-found common-aliases extract themes vundle web-search z)
 
 source $ZSH/oh-my-zsh.sh
 
