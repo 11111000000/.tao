@@ -20,6 +20,7 @@ import XMonad.Layout.IM
 import XMonad.Layout.DragPane
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.ToggleLayouts
+import XMonad.Layout.MultiToggle
 import XMonad.Layout.NoBorders                                  (noBorders)
 
 import XMonad.Hooks.DynamicLog 
@@ -27,6 +28,7 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.FadeInactive
 
 import XMonad.Actions.UpdatePointer
 import XMonad.Actions.Warp
@@ -55,7 +57,7 @@ myFocusFollowsMouse = True
 myBorderWidth   = 1
 myModMask       = mod4Mask
 myNumlockMask   = mod2Mask
-myWorkspaces    = ["vim", "web" ,"work", "im", "vm", "fun", "gimp", "desk", "ext"]
+myWorkspaces    = ["①", "②" ,"③", "④", "⑤", "⑥", "⑦", "⑧", "⑨"]
 myNormalBorderColor  = "#212121"
 myFocusedBorderColor = "#424242"
 
@@ -72,11 +74,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_f     ), namedScratchpadAction myScratchpads "ranger")
     {-, ((modm,               xK_w     ), namedScratchpadAction myScratchpads "weechat")-}
     , ((modm,               xK_v     ), namedScratchpadAction myScratchpads "alsamixer")
-    , ((modm,               xK_n     ), namedScratchpadAction myScratchpads "mpd")
+    , ((modm,               xK_m     ), namedScratchpadAction myScratchpads "mpd")
     --, ((modm,               xK_grave     ), namedScratchpadAction myScratchpads "console")
-    , ((modm,               xK_r     ), spawn "exe=`dmenu_run -nb '#4B4B4B' -nf 'green' -sb 'grey' -sf 'black' -fn 'Terminus (TTF)-16' ` && eval \"exec $exe\"")
+    , ((modm,               xK_r     ), spawn "exe=`dmenu_run -nb '#aaaaaa' -nf '#333333' -sb '#6b6b6b' -sf '#cccccc' -fn 'BabelStone Modern-16' ` && eval \"exec $exe\"")
     , ((modm,               xK_c     ), spawn "exec dmenuclip")
-    , ((modm,               xK_m     ), spawn "exec xmenud")
+    {-, ((modm,               xK_s    ), spawn "exec xmenud")-}
     {-, ((modm,               xK_f     ), withFocused (sendMessage . maximizeRestore))-}
     , ((modm,               xK_g     ), spawn "exec pcmanfm" )
     -- , ((modm .|. shiftMask, xK_r     ), spawn "gmrun")
@@ -109,9 +111,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
     , ((modm              , xK_b     ), sendMessage ToggleStruts)
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
-    , ((modm .|. shiftMask, xK_Escape     ), spawn "xmonad --recompile; xmonad --restart")
     , ((modm              , xK_z     ), sendMessage ToggleLayout)
-    --  , ((modm              , xK_x     ), sendMessage (Toggle "Full"))
+    , ((modm .|. shiftMask, xK_Escape     ), spawn "xmonad --recompile; xmonad --restart")
+      {-, ((modm              , xK_x     ), sendMessage (Toggle "Full"))-}
 
     ]
     ++
@@ -133,7 +135,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 
 myLayoutHook = toggleLayouts (noBorders Full) $ avoidStruts $ onWorkspace "im" imLayout $ onWorkspace "gimp" gimpLayout $ standardLayouts 
   where
-     standardLayouts = myTabs ||| myDragPane ||| tiled ||| Grid  
+     standardLayouts = myTabs ||| tiled ||| Grid ||| Circle
      myDragPane = dragPane Horizontal 0.1 0.5
      tiled   = ResizableTall nmaster delta ratio []
      nmaster = 1
@@ -145,35 +147,36 @@ myLayoutHook = toggleLayouts (noBorders Full) $ avoidStruts $ onWorkspace "im" i
      gimpLayout = withIM (2/10) (Role "gimp-toolbox") (standardLayouts)
 
 myTabsTheme :: Theme
-myTabsTheme = defaultTheme { activeBorderColor = "#555"
-                            , activeColor = "#252525"
-                            , activeTextColor = "#9296D6"
-                            , inactiveBorderColor = "#777"
-                            , inactiveColor = "#888"
-                            , inactiveTextColor = "#111"
-                            , fontName = "xft:Terminus (TTF)-12:bold"
-                            , decoHeight = 21 
-                            , urgentColor = "#000"
-                            , urgentTextColor = "#63b8ff"
+myTabsTheme = defaultTheme { activeBorderColor = "#eeeeee"
+                            , activeColor = "#eeeeee"
+                            , activeTextColor = "#212121"
+                            , inactiveBorderColor = "#6B6B6B"
+                            , inactiveColor = "#6B6B6B"
+                            , inactiveTextColor = "#e1e1e1"
+                            , fontName = "xft:BabelStone Modern:size=12"
+                            , decoHeight = 21
+                            , urgentColor = "#000000"
+                            , urgentTextColor = "#ffffff"
                             }
-
+---["①", "②" ,"③", "④", "⑤", "⑥", "⑦", "⑧", "⑨"]
 myManageHook = composeAll
-    [ className =? "MPlayer"        --> doShift "fun"
-    , resource  =? "desktop_window" --> doIgnore
+    [ resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore 
-    , className =? "Firefox"        --> doShift "web"
-    , className =? "Chromium"       --> doShift "work"
-    , className =? "Thunderbird"    --> doShift "im"
-    , className =? "Claws-mail"     --> doShift "web"
-    , className =? "Pidgin"         --> doShift "im"
-    , className =? "Skype"          --> doShift "im"
-    , className =? "Ekiga"          --> doShift "im"
-    , className =? "Linphone"          --> doShift "im"
-    , className =? "VirtualBox"     --> doShift "vm"
-    , className =? "Gvim"           --> doShift "vim"
-    , className =? "Vlc"            --> doShift "fun"
-    , className =? "Streamtuner2"   --> doShift "fun"    
-    , className =? "Deluge"         --> doShift "ext"    
+    , className =? "Gvim"           --> doShift "①"
+    , className =? "Chromium"       --> doShift "①"
+    , className =? "Firefox"        --> doShift "②"
+    , className =? "Google-chrome-unstable" --> doShift "①"
+    , className =? "Thunderbird"    --> doShift "④"
+    , className =? "Claws-mail"     --> doShift "④"
+    , className =? "Pidgin"         --> doShift "④"
+    , className =? "Skype"          --> doShift "④"
+    , className =? "Ekiga"          --> doShift "④"
+    , className =? "Linphone"       --> doShift "④"
+    , className =? "VirtualBox"     --> doShift "⑤"
+    , className =? "Vlc"            --> doShift "⑥"
+    , className =? "Streamtuner2"   --> doShift "⑥"    
+    , className =? "MPlayer"        --> doShift "⑥"
+    , className =? "Deluge"         --> doShift "⑨"    
     {-, title =? "ncmpcpp"              --> doShift "fun"-}
     {-, title =? "ncmpc"              --> doShift "fun"-}
     , title =? "streamripper"       --> doShift "fun"    
@@ -194,13 +197,13 @@ manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
 myScratchpads = [
     NS "htop" "urxvt -fn 'xft:Terminus (TTF)-10' -e htop" (title =? "htop") 
         (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
-    , NS "ranger" "urxvt -fn 'xft:Terminus (TTF)-14' -e ranger" (title =? "ranger") 
+    , NS "ranger" "urxvt -fn 'xft:BabelStone Modern:size=12' -e ranger" (title =? "ranger") 
         (customFloating $ W.RationalRect 0 0 1 1)
     , NS "weechat" "urxvt -fn 'xft:Terminus (TTF)-14' -e weechat-curses" (fmap (isInfixOf "weechat") title) 
         (customFloating $ W.RationalRect 0 0 1 1)
-    , NS "alsamixer" "urxvt -fn 'xft:Terminus (TTF)-12' -e alsamixer -c0" (title =? "alsamixer") 
+    , NS "alsamixer" "urxvt -fn 'xft:BabelStone Modern:size=10' -e alsamixer -c0" (title =? "alsamixer") 
         (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
-    , NS "mpd" "urxvt -fn 'xft:Terminus (TTF)-12' -e ncmpcpp" (title =? "ncmpcpp") 
+    , NS "mpd" "urxvt -fn 'xft:BabelStone Modern:size=12' -e ncmpc" (title =? "ncmpc") 
         (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
     , NS "editor" "gvim -geom 201x21 -fn 'Terminus (TTF) 14' --role scratchEditor -c ':OpenSession! user'" (role =? "scratchEditor")
         (customFloating $ W.RationalRect 0 0 1 0.5)
@@ -218,32 +221,40 @@ manageNamedScratchpad = namedScratchpadManageHook myScratchpads
 
 myLogHook h = dynamicLogWithPP $ xmobarPP            
             {
-                  ppCurrent = xmobarColor "green" "" . wrap "" "" 
-                , ppLayout = xmobarColor "#D5A148" "" 
+                  ppCurrent = xmobarColor "#eeeeee" "" . wrap "" "" 
+                , ppLayout = xmobarColor "#333333" "" . wrap "" ""
                 . (\ x -> case x of
-                              "ResizableTall"             -> " R"
-                              "Mirror ResizableTall"      -> "MR"
-                              "Tabbed Bottom Simplest"    -> "TB"
-                              "Full"                      -> " F"
-                              "Magnifier Grid"            -> "MG"
-                              "IM ResizableTall"          -> "IR"
-                              "IM Mirror ResizableTall"   -> "MR"
-                              "IM Tabbed Simplest"        -> "TS"
-                              "IM Full"                   -> " F"
-                              "IM Magnifier Grid"         -> "MG"
-                              "Grid"                      -> " G"
+                              "ResizableTall"             -> "Re"
+                              "Mirror ResizableTall"      -> "Mr"
+                              "Tabbed Bottom Simplest"    -> "Tb"
+                              "Full"                      -> "Fu"
+                              "Magnifier Grid"            -> "Mg"
+                              "IM ResizableTall"          -> "Re"
+                              "IM Mirror ResizableTall"   -> "Mr"
+                              "IM Tabbed Bottom Simplest" -> "Tb"
+                              "IM Full"                   -> "Fu"
+                              "IM Grid"                   -> "Gr"
+                              "IM Magnifier Grid"         -> "Mg"
+                              "Grid"                      -> "Gr"
+                              "Circle"                    -> "Ci"
                               _                           -> pad x
                             )
-                , ppTitle   = xmobarColor "#9296D6"  "" . shorten 45
+                , ppTitle   = xmobarColor "#eeeeee"  "" . shorten 85
                 , ppVisible = wrap "" ""
                 , ppHidden = noScratchPad
                 , ppUrgent = xmobarColor "red" "blue"
+                , ppSep = " │ "
+                , ppWsSep = " "
                 , ppOutput = System.IO.hPutStrLn h
             } 
             where 
                 noScratchPad ws = if ws == "NSP" then "" else ws
 
 myStartupHook = setWMName "LG3D"
+
+myFadeHook :: X ()
+myFadeHook = fadeInactiveLogHook fadeAmount
+      where fadeAmount = 0.9333
 
 main = do
     xmproc <- spawnPipe "xmobar"
@@ -261,6 +272,6 @@ main = do
             , layoutHook         = myLayoutHook 
             , manageHook         = myManageHook <+> manageDocks <+> manageScratchPad <+> manageNamedScratchpad 
             , handleEventHook    = fullscreenEventHook
-            , logHook = myLogHook xmproc  >>  updatePointer (Relative 0.5 0.5)
+            , logHook = myFadeHook <+> myLogHook xmproc  >>  updatePointer (Relative 0.5 0.5)
             , startupHook        = myStartupHook
     }
